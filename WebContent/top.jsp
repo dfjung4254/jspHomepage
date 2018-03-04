@@ -2,7 +2,7 @@
     pageEncoding="EUC-KR"%>
 <html>
 <head>
-	<title>JKH's Home</title>
+	<title>JKH 의 홈페이지입니다</title>
 	<link rel = "stylesheet" type = "text/css" href = "style.css">
 </head>
 
