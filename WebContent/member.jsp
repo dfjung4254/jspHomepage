@@ -11,6 +11,9 @@
 			<div class = "membership-row">
 				아이디<input type = "text">
 			</div>
+			<div class = "membership-row">
+				비밀번호<input type = "text">
+			</div>
 		</div>
 	</div>
 <%@ include file = "bottom.jsp" %>
