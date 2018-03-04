@@ -14,6 +14,18 @@
 			<div class = "membership-row">
 				비밀번호<input type = "text">
 			</div>
+			<div class = "membership-row">
+				주민등록번호<input type = "text">
+			</div>
+			<div class = "membership-row">
+				이메일<input type = "text">
+			</div>
+			<div class = "membership-row">
+				연락처<input type = "text">
+			</div>
+			<div class = "membership-row">
+				<input type = "submit"><input type = "submit">
+			</div>
 		</div>
 	</div>
 <%@ include file = "bottom.jsp" %>
