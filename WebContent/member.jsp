@@ -4,28 +4,28 @@
 <%@ include file = "subMenu.jsp" %>
 	<div align = "center">
 		<h1>MEMBERSHIP APLICATION</h1>
-		<div class = "membership">
-			<div class = "membership-row">
-				이름<input type = "text">
+		<div class = "member-container">
+			<div class = "member-tr">
+				<div class = "member-td">이름</div>	<div class = "member-td"><input class = "member-input" type = "text"></div>
 			</div>
-			<div class = "membership-row">
-				아이디<input type = "text">
+			<div class = "member-tr">
+				<div class = "member-td">아이디</div>	<div class = "member-td"><input class = "member-input" type = "text"></div>
 			</div>
-			<div class = "membership-row">
-				비밀번호<input type = "text">
+			<div class = "member-tr">
+				<div class = "member-td">비밀번호</div>	<div class = "member-td"><input class = "member-input" type = "password"></div>
 			</div>
-			<div class = "membership-row">
-				주민등록번호<input type = "text">
+			<div class = "member-tr">
+				<div class = "member-td">주민등록번호</div>	<div class = "member-td"><input class = "member-input" type = "text"></div>
 			</div>
-			<div class = "membership-row">
-				이메일<input type = "text">
+			<div class = "member-tr">
+				<div class = "member-td">이메일</div>	<div class = "member-td"><input class = "member-input" type = "text"></div>
 			</div>
-			<div class = "membership-row">
-				연락처<input type = "text">
+			<div class = "member-tr">
+				<div class = "member-td">연락처</div>	<div class = "member-td"><input class = "member-input" type = "text"></div>
 			</div>
-			<div class = "membership-row">
-				<input type = "submit"><input type = "submit">
-			</div>
+		</div>
+		<div style = "margin-top:10px">
+			<input type = "submit" value = "가입" class = "member-btn"><input type = "submit" value = "취소" class = "member-btn">
 		</div>
 	</div>
 <%@ include file = "bottom.jsp" %>

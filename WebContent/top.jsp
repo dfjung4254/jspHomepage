@@ -3,7 +3,7 @@
 <html>
 <head>
 	<title>JKH 의 홈페이지입니다</title>
-	<link rel = "stylesheet" type = "text/css" href = "style.css">
+	<link rel = "stylesheet" type = "text/css" href = "style.css?ver=1">
 </head>
 
 <body>
