@@ -1,5 +1,6 @@
 html{
 	background-color: black;
+	padding:150px;
 }
 
 body{
@@ -18,6 +19,13 @@ h1{
 	font-size:15pt;
 	font-family:consolas;
 	letter-spacing:0.2em;
+}
+
+h2 !important{
+	font-size:20pt;
+	font-family:°íµñ;
+	letter-spacing:0.2em;
+	color:white;
 }
 
 .main{

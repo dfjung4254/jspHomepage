@@ -8,7 +8,7 @@
 
 <body>
 
-	<div align = "center">
+	<div align = "center" vertical-align = "middle">
 			<table  class = "main" width = "800" height = "600">
 				<tr height = "5%">
 					<td colspan = "2" align = "center">
