@@ -1,9 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=EUC-KR"
     pageEncoding="EUC-KR"%>
-<!-- 도서관리 페이지 index.jsp -->
+<!-- 도서등록 페이지 insert.jsp -->
 <html>
 <head>
-	<title>도서관리 페이지</title>
+	<title>도서등록 페이지</title>
 </head>
 
 <body>
@@ -26,6 +26,11 @@
 			<div style = "display:table-row;">
 				<div style = "display:table-cell;width:800px;height:10px;border-bottom:1px dotted black;vertical-align:middle;padding-right:10px;text-align:right;">
 					VER 1.0
+				</div>
+			</div>
+			<div style = "display:table-row;">
+				<div style = "display:table-cell;width:800px;border-bottom:1px solid gray;vertical-align:middle;padding:10px;text-align:center;">
+					<h1>여기에 도서등록 입력폼 만들기</h1>
 				</div>
 			</div>
 		</div>
