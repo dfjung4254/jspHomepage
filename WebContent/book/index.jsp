@@ -1,34 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=EUC-KR"
     pageEncoding="EUC-KR"%>
 <!-- 도서관리 페이지 index.jsp -->
-<html>
-<head>
-	<title>도서관리 페이지</title>
-</head>
-
-<body>
-	<div align = "center">
-		<div style = "width:850px;border-left:1px solid gray;border-right:1px solid gray;">
-			<div style = "display:table-row;">
-				<div style = "display:table-cell;width:800px;height:70px;border-bottom:1px dotted black;vertical-align:bottom;padding-bottom:10px;word-spacing:30px;">
-					<a href="insert.jsp">도서등록</a>
-					<a href="">도서등록</a>
-					<a href="">도서등록</a>
-					<a href="">도서등록</a>
-					<a href="">도서등록</a>
-				</div>
-			</div>
-			<div style = "display:table-row;">
-				<div style = "display:table-cell;width:800px;height:300px;border-bottom:1px dotted black;vertical-align:middle;">
-					<h2>여기에는 그림 삽입</h2>
-				</div>
-			</div>
-			<div style = "display:table-row;">
-				<div style = "display:table-cell;width:800px;height:10px;border-bottom:1px dotted black;vertical-align:middle;padding-right:10px;text-align:right;">
-					VER 1.0
-				</div>
-			</div>
-		</div>
-	</div>
-</body>
-</html>
+<%@ include file = "book_top.jsp" %>
+	<h1>MAIN 화면이 나타날 곳임</h1>
+<%@ include file = "book_bottom.jsp" %>

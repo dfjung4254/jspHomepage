@@ -1,39 +1,42 @@
 <%@ page language="java" contentType="text/html; charset=EUC-KR"
     pageEncoding="EUC-KR"%>
 <!-- 도서등록 페이지 insert.jsp -->
-<html>
-<head>
-	<title>도서등록 페이지</title>
-</head>
-
-<body>
+<%@ include file = "book_top.jsp" %>
 	<div align = "center">
-		<div style = "width:850px;border-left:1px solid gray;border-right:1px solid gray;">
-			<div style = "display:table-row;">
-				<div style = "display:table-cell;width:800px;height:70px;border-bottom:1px dotted black;vertical-align:bottom;padding-bottom:10px;word-spacing:30px;">
-					<a href="insert.jsp">도서등록</a>
-					<a href="">도서등록</a>
-					<a href="">도서등록</a>
-					<a href="">도서등록</a>
-					<a href="">도서등록</a>
-				</div>
-			</div>
-			<div style = "display:table-row;">
-				<div style = "display:table-cell;width:800px;height:300px;border-bottom:1px dotted black;vertical-align:middle;">
-					<h2>여기에는 그림 삽입</h2>
-				</div>
-			</div>
-			<div style = "display:table-row;">
-				<div style = "display:table-cell;width:800px;height:10px;border-bottom:1px dotted black;vertical-align:middle;padding-right:10px;text-align:right;">
-					VER 1.0
-				</div>
-			</div>
-			<div style = "display:table-row;">
-				<div style = "display:table-cell;width:800px;border-bottom:1px solid gray;vertical-align:middle;padding:10px;text-align:center;">
-					<h1>여기에 도서등록 입력폼 만들기</h1>
-				</div>
-			</div>
-		</div>
+		<form name = "insert" method = "post" action = "insert_check.jsp">
+		<table style = "width:300px;">
+			<tr>
+				<td colspan = "2" style = "border-top:2px solid tomato;text-align:center;
+				border-bottom:2px solid red;font-family:돋움;font-size:14pt;
+				letter-spacing:0.2em;vertical-align:middle;padding:10px;">
+				도서등록페이지
+				</td>
+			</tr>
+			<tr style = "background-color:skyblue;font-size:10pt;font-family:돋움;">
+				<td style = "padding:5px;">도서명</td>
+				<td style = "text-align:center;"><input type = "text" name = "name"></td>
+			</tr>
+			<tr style = "background-color:skyblue;font-size:10pt;font-family:돋움;">
+				<td style = "padding:5px;">출판사</td>
+				<td style = "text-align:center;"><input type = "text" name = "publisher"></td>
+			</tr>
+			<tr style = "background-color:skyblue;font-size:10pt;font-family:돋움;">
+				<td style = "padding:5px;">지은이</td>
+				<td style = "text-align:center;"><input type = "text" name = "writer"></td>
+			</tr>
+			<tr style = "background-color:skyblue;font-size:10pt;font-family:돋움;">
+				<td style = "padding:5px;">판매가</td>
+				<td style = "text-align:center;"><input type = "text" name = "price"></td>
+			</tr>
+			<tr style = "background-color:tomato;text-align:center;vertical-align:middle;">
+				<td colspan = "2" style = "font-size:8pt;vertical-align:middle;">
+					<br>
+					<input type = "submit" value = "등록">
+					<input type = "reset" value = "취소">
+				</td>
+			</tr>
+		</table>
+		</form>
 	</div>
-</body>
-</html>
+
+<%@ include file = "book_bottom.jsp" %>
