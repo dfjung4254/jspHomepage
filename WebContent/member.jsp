@@ -6,7 +6,7 @@
 		<h1>MEMBERSHIP APLICATION</h1>
 		<div class = "member-container">
 			<div class = "member-tr">
-				<div class = "member-td">키키</div>	<div class = "member-td"><input class = "member-input" type = "text"></div>
+				<div class = "member-td">이름</div>	<div class = "member-td"><input class = "member-input" type = "text"></div>
 			</div>
 			<div class = "member-tr">
 				<div class = "member-td">아이디</div>	<div class = "member-td"><input class = "member-input" type = "text"></div>
