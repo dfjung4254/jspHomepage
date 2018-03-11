@@ -25,7 +25,7 @@
 			</div>
 		</div>
 		<div style = "margin-top:10px">
-			<input type = "submit" value = "媛���" class = "member-btn"><input type = "submit" value = "痍⑥��" class = "member-btn">
+			<input type = "submit" value = "제출" class = "member-btn"><input type = "submit" value = "취소" class = "member-btn">
 		</div>
 	</div>
 <%@ include file = "bottom.jsp" %>
