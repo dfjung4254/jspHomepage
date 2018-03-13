@@ -6,26 +6,26 @@
 		<h1>MEMBERSHIP APLICATION</h1>
 		<div class = "member-container">
 			<div class = "member-tr">
-				<div class = "member-td">이름</div>	<div class = "member-td"><input class = "member-input" type = "text"></div>
+				<div class = "member-td">�̸�</div>	<div class = "member-td"><input class = "member-input" type = "text"></div>
 			</div>
 			<div class = "member-tr">
-				<div class = "member-td">아이디</div>	<div class = "member-td"><input class = "member-input" type = "text"></div>
+				<div class = "member-td">���̵�</div>	<div class = "member-td"><input class = "member-input" type = "text"></div>
 			</div>
 			<div class = "member-tr">
-				<div class = "member-td">비밀번호</div>	<div class = "member-td"><input class = "member-input" type = "password"></div>
+				<div class = "member-td">��й�ȣ</div>	<div class = "member-td"><input class = "member-input" type = "password"></div>
 			</div>
 			<div class = "member-tr">
-				<div class = "member-td">주민등록번호</div>	<div class = "member-td"><input class = "member-input" type = "text"></div>
+				<div class = "member-td">�ֹε�Ϲ�ȣ</div>	<div class = "member-td"><input class = "member-input" type = "text"></div>
 			</div>
 			<div class = "member-tr">
-				<div class = "member-td">이메일</div>	<div class = "member-td"><input class = "member-input" type = "text"></div>
+				<div class = "member-td">��ȭ��ȣ</div>	<div class = "member-td"><input class = "member-input" type = "text"></div>
 			</div>
 			<div class = "member-tr">
-				<div class = "member-td">전화번호</div>	<div class = "member-td"><input class = "member-input" type = "text"></div>
+				<div class = "member-td">�ּ�</div>	<div class = "member-td"><input class = "member-input" type = "text"></div>
 			</div>
 		</div>
 		<div style = "margin-top:10px">
-			<input type = "submit" value = "제출" class = "member-btn"><input type = "submit" value = "취소" class = "member-btn">
+			<input type = "submit" value = "����" class = "member-btn"><input type = "submit" value = "���" class = "member-btn">
 		</div>
 	</div>
 <%@ include file = "bottom.jsp" %>
