@@ -3,6 +3,8 @@
 <html>
 <head>
 	<title>도서등록 페이지</title>
+	<link rel = "stylesheet" type = "text/css" href = "style.css?ver=1">
+	<script>document.write('<script src="http://' + (location.host || 'localhost').split(':')[0] + ':35729/livereload.js?snipver=1"></' + 'script>')</script>
 </head>
 
 <body>
@@ -11,7 +13,7 @@
 			<div style = "display:table-row;">
 				<div style = "display:table-cell;width:800px;height:70px;border-bottom:1px dotted black;vertical-align:bottom;padding-bottom:10px;word-spacing:30px;">
 					<a href="insert.jsp">도서등록</a>
-					<a href="">도서보기</a>
+					<a href="list.jsp">도서보기</a>
 					<a href="">도서검색</a>
 					<a href="">도서삭제</a>
 					<a href="">도서수정</a>

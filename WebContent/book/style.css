@@ -1,0 +1,51 @@
+.cell-left{
+	text-align:center;
+	font-size:12pt;
+	font-family:°íµñ;
+	border-left:0;
+	border-right:1px dotted black;
+}
+.cell-right{
+	text-align:center;
+	font-size:12pt;
+	font-family:°íµñ;
+	border-right:0;	
+	border-left:1px dotted black;
+}
+
+.cell{
+	text-align:center;
+	font-size:12pt;
+	font-family:°íµñ;
+	border-left:1px dotted black;
+	border-right:1px dotted black;
+}
+
+.row-left{
+	text-align:center;
+	font-size:12pt;
+	font-family:°íµñ;
+	border-left:0;
+	border-right:1px dotted black;
+	border-bottom:1px dotted black;
+	background-color:#c1dfd7;
+}
+.row-right{
+	text-align:center;
+	font-size:12pt;
+	font-family:°íµñ;
+	border-right:0;	
+	border-left:1px dotted black;
+	border-bottom:1px dotted black;
+	background-color:#c1dfd7;
+}
+
+.row{
+	text-align:center;
+	font-size:12pt;
+	font-family:°íµñ;
+	border-left:1px dotted black;
+	border-right:1px dotted black;
+	border-bottom:1px dotted black;
+	background-color:#c1dfd7;
+}
