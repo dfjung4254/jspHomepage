@@ -4,7 +4,6 @@
 <head>
 	<title>도서등록 페이지</title>
 	<link rel = "stylesheet" type = "text/css" href = "style.css?ver=1">
-	<script>document.write('<script src="http://' + (location.host || 'localhost').split(':')[0] + ':35729/livereload.js?snipver=1"></' + 'script>')</script>
 </head>
 
 <body>
@@ -20,8 +19,9 @@
 				</div>
 			</div>
 			<div style = "display:table-row;">
-				<div style = "display:table-cell;width:800px;height:300px;border-bottom:1px dotted black;vertical-align:middle;">
-					<h2>여기에는 그림 삽입</h2>
+				<div style = "display:table-cell;width:800px;padding-top:30px;padding-bottom:30px;border-bottom:1px dotted black;vertical-align:middle;">
+					<!-- main Image -->
+					<img src = "../image/security.PNG">
 				</div>
 			</div>
 			<div style = "display:table-row;">

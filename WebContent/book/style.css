@@ -1,22 +1,28 @@
+a {
+	font-size:12pt;
+	font-family:³ª´®°íµñ;
+	color:#ff0080;
+}
+
 .cell-left{
 	text-align:center;
-	font-size:12pt;
-	font-family:°íµñ;
+	font-size:11pt;
+	font-family:³ª´®°íµñ;
 	border-left:0;
 	border-right:1px dotted black;
 }
 .cell-right{
 	text-align:center;
-	font-size:12pt;
-	font-family:°íµñ;
+	font-size:11pt;
+	font-family:³ª´®°íµñ;
 	border-right:0;	
 	border-left:1px dotted black;
 }
 
 .cell{
 	text-align:center;
-	font-size:12pt;
-	font-family:°íµñ;
+	font-size:11pt;
+	font-family:³ª´®°íµñ;
 	border-left:1px dotted black;
 	border-right:1px dotted black;
 }
@@ -24,7 +30,7 @@
 .row-left{
 	text-align:center;
 	font-size:12pt;
-	font-family:°íµñ;
+	font-family:³ª´®°íµñ;
 	border-left:0;
 	border-right:1px dotted black;
 	border-bottom:1px dotted black;
@@ -33,7 +39,7 @@
 .row-right{
 	text-align:center;
 	font-size:12pt;
-	font-family:°íµñ;
+	font-family:³ª´®°íµñ;
 	border-right:0;	
 	border-left:1px dotted black;
 	border-bottom:1px dotted black;
@@ -43,7 +49,7 @@
 .row{
 	text-align:center;
 	font-size:12pt;
-	font-family:°íµñ;
+	font-family:³ª´®°íµñ;
 	border-left:1px dotted black;
 	border-right:1px dotted black;
 	border-bottom:1px dotted black;
