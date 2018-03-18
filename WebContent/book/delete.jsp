@@ -1,19 +1,21 @@
 <%@ page language="java" contentType="text/html; charset=EUC-KR"
     pageEncoding="EUC-KR"%>
-<!-- 도서 리스트 페이지임 list.jsp -->
-<%@ page import = "java.sql.*" %>
+<%@ page import = "java.sql.*"  %>
+<!-- 도서삭제 페이지 delete.jsp -->
 <%@ include file = "book_top.jsp" %>
 	<div align = "center">
 		<div style = "letter-spacing:0.2em;font-size:20pt;font-family:나눔고딕;font-weight:bold;color:deeppink;margin-bottom:15px;">
-			도서 리스트
+			도서삭제
 		</div>
+		<form name = "delete" method = "post" action = "delete_check.jsp">
 		<table style="width:600px;border-top:2px dotted tomato;border-bottom:2px dotted tomato;">
 			<tr>
 				<td class="row-left">이름</td>
 				<td class="row">출판사</td>
 				<td class="row">지은이</td>
 				<td class="row">가격</td>
-				<td class="row-right">등록일</td>
+				<td class="row">등록일</td>
+				<td class="row-right">삭제</td>
 			</tr>
 			<%
 			 
@@ -45,11 +47,16 @@
 					<td class="cell"><%out.println(publisher); %></td>
 					<td class="cell"><%out.println(writer); %></td>
 					<td class="cell"><%out.println(price); %></td>
-					<td class="cell-right"><%out.println(day); %></td>
+					<td class="cell"><%out.println(day); %></td>
+					<td class="cell-right"><input name = "check" value = "<%=name %>"type="checkbox"></td>
 				</tr>
 				<%
 			}
 			%>
 		</table>
+		<br>
+		<input type = "submit" value = "선택삭제">
+		</form>
 	</div>
+
 <%@ include file = "book_bottom.jsp" %>
