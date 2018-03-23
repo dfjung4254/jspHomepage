@@ -1,0 +1,32 @@
+html{
+	background-color: black;
+}
+
+body{
+	color: white;
+	font-family:³ª´®°íµñ;
+}
+
+.input{
+	text-align:center;
+	height:22px;
+	border-top:0;
+	border-left:0;
+	border-right:0;
+	color:white;
+	border-bottom:1px solid gray;
+	background-color: rgba(255,255,255,0);
+}
+
+.button {
+	width:60;
+	height:40;
+	font-family:µ¸¿ò;
+	margin-top:10px;
+	border-radius: 2px;
+	color: black;
+	background-color: pink;
+	font-size: 8pt;
+	outline:0;
+	border:0;
+}

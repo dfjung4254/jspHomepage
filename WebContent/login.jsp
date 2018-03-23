@@ -7,10 +7,10 @@
 		<form>
 			<div class = "container">
 				<div class = "row">
-					 I D <input type = "text">
+					 I D <input type = "text" name="id" value="">
 				</div>
 				<div class = "row">
-					PW <input type = "password">
+					PW <input type = "password" name="passwd" value="">
 				</div>
 				<div class = "checkmain">
 					<input class = "check" type = "checkbox">아이디 기억

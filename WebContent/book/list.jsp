@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=EUC-KR"
     pageEncoding="EUC-KR"%>
+<%@ page import = "java.util.ArrayList, home.book.BookDTO" %>
+<jsp:useBean id = "dao" class = "home.book.BookDAO"/>
 <!-- 도서 리스트 페이지임 list.jsp -->
 <%@ page import = "java.sql.*" %>
 <%@ include file = "book_top.jsp" %>
@@ -16,39 +18,24 @@
 				<td class="row-right">등록일</td>
 			</tr>
 			<%
-			 
-			request.setCharacterEncoding("EUC-KR");
-				
-			try{
-				Class.forName("com.mysql.jdbc.Driver");
-				System.out.println("드라이버 등록 성공");
-			}catch(Exception e){
-				System.out.println("드라이버 등록 실패");
-			}
-			String url = "jdbc:mysql://13.125.191.119:3306/jkh_homepage";
-			String user = "jkh";
-			String pass = "rmsghk4254";
-			String sql = "select * from booklist;";
-			Connection con = DriverManager.getConnection(url,user,pass);
-			Statement st = con.createStatement();
-			ResultSet rs = st.executeQuery(sql);
-			while(rs.next()){
-				String name = rs.getString("name");
-				String publisher = rs.getString("publisher");
-				String writer = rs.getString("writer");
-				int price = rs.getInt("price");
-				Date day = rs.getDate("day");
+			
+			ArrayList <BookDTO> bookList = dao.makeList();
+			
+			for(int i = 0; i < bookList.size(); i++){
 				
 				%>
 				<tr>
-					<td class="cell-left"><%out.println(name); %></td>
-					<td class="cell"><%out.println(publisher); %></td>
-					<td class="cell"><%out.println(writer); %></td>
-					<td class="cell"><%out.println(price); %></td>
-					<td class="cell-right"><%out.println(day); %></td>
+					<td class="cell-left"><%=bookList.get(i).getName() %></td>
+					<td class="cell"><%=bookList.get(i).getWriter() %></td>
+					<td class="cell"><%=bookList.get(i).getPublisher() %></td>
+					<td class="cell"><%=bookList.get(i).getPrice() %></td>
+					<td class="cell-right"><%=bookList.get(i).getDay() %></td>
 				</tr>
 				<%
+				
 			}
+
+			
 			%>
 		</table>
 	</div>

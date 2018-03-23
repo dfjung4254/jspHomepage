@@ -138,6 +138,7 @@ h2 !important{
 }
 
 .member-input{
+	text-align:center;
 	width:150px;
 	height:22px;
 	border-top:0;
@@ -148,7 +149,29 @@ h2 !important{
 	background-color: rgba(255,255,255,0);
 }
 
+.member-input2{
+	text-align:center;
+	width:70px;
+	height:22px;
+	border-top:0;
+	border-left:0;
+	border-right:0;
+	color:white;
+	border-bottom:1px solid gray;
+	background-color: rgba(255,255,255,0);
+}
 
+.member-input3{
+	text-align:center;
+	width:42px;
+	height:22px;
+	border-top:0;
+	border-left:0;
+	border-right:0;
+	color:white;
+	border-bottom:1px solid gray;
+	background-color: rgba(255,255,255,0);
+}
 
 
 
