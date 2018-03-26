@@ -69,11 +69,11 @@ h2 !important{
 	font-family:µ¸¿ò;
 	margin-top:10px;
 	border-radius: 2px;
-	color: black;
-	background-color: pink;
+	color: white;
+	background-color: black;
 	font-size: 8pt;
 	outline:0;
-	border:0;
+	border:1px solid skyblue;
 }
 
 .checkmain {
@@ -94,14 +94,15 @@ h2 !important{
 .btnSmall{
 	width:45;
 	height:18;
-	background-color: pink;
+	background-color: black;
 	border-radius: 1px;
 	outline:0;
-	border:0;
+	border:1px solid skyblue;
 	font-size:8pt;
 	text-align:center;
 	padding:0.20em;
 	vertical-align: middle;
+	color:white;
 }
 
 .member-container{
@@ -129,12 +130,13 @@ h2 !important{
 	width:80px;
 	height:30px;
 	margin:10px;
-	background-color:pink;
+	background-color:black;
 	border-radius:4px;
 	outline:0;
-	border:0;
+	border:1px solid skyblue;
 	font-size:10pt;
 	font-family:µ¸¿ò;
+	color:white;
 }
 
 .member-input{

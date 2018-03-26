@@ -11,6 +11,7 @@
 		<div style = "width:850px;border-left:1px solid gray;border-right:1px solid gray;">
 			<div style = "display:table-row;">
 				<div style = "display:table-cell;background-color:lightpink;width:800px;height:40px;border-top:1px dotted black;border-bottom:1px dotted black;vertical-align:middle;padding-top:10px;padding-bottom:10px;word-spacing:30px;">
+					<a href="../index.jsp">메인으로</a>
 					<a href="insert.jsp">도서등록</a>
 					<a href="list.jsp">도서보기</a>
 					<a href="search.jsp">도서검색</a>

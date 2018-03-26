@@ -10,6 +10,17 @@
 			window.name = "mainWindow";
 			window.open("member/member_check.jsp", "member", "width=500, height=300, resizable=no, left=600, top=300");
 		}
+		function member_delete(num){
+			if(confirm("정말 삭제하시겠습니까??")){
+				location.href = "admin_memberDelete.jsp?no="+num;
+			}
+			
+		}
+		function onUpdate(){
+			if(confirm("수정하시겠습니까?")){
+				document.updateMember.submit();
+			}
+		}
 	</script>
 	
 </head>

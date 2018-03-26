@@ -1,6 +1,11 @@
 package home.member;
 
-import java.sql.*;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.ArrayList;
 
 public class MemberDAO {
 	
@@ -133,6 +138,225 @@ public class MemberDAO {
 		}
 		
 		return ret;
+	}
+	
+	public ArrayList <MemberDTO> newMemberList(){
+		ArrayList <MemberDTO> list = new ArrayList <MemberDTO> ();
+		String sql = "select * from membership;";
+		try {
+			con = DriverManager.getConnection(url, user, pass);
+			ps = con.prepareStatement(sql);
+			rs = ps.executeQuery();
+			
+			while(rs.next()) {
+				MemberDTO member = new MemberDTO();
+				member.setNo(rs.getInt("no"));
+				member.setName(rs.getString("name"));
+				member.setId(rs.getString("id"));
+				member.setPasswd(rs.getString("passwd"));
+				member.setSsn1(rs.getString("ssn1"));
+				member.setSsn2(rs.getString("ssn2"));
+				member.setEmail(rs.getString("email"));
+				member.setHp1(rs.getString("hp1"));
+				member.setHp2(rs.getString("hp2"));
+				member.setHp3(rs.getString("hp3"));
+				member.setJoindate(rs.getString("joindate"));
+				list.add(member);
+			}
+			
+			con.close();
+			ps.close();
+			rs.close();
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return list;
+	}
+	
+	public ArrayList <MemberDTO> newMemberList(int no){
+		ArrayList <MemberDTO> list = new ArrayList <MemberDTO> ();
+		String sql = "select * from membership where no='"+no+"';";
+		try {
+			con = DriverManager.getConnection(url, user, pass);
+			ps = con.prepareStatement(sql);
+			rs = ps.executeQuery();
+			
+			while(rs.next()) {
+				MemberDTO member = new MemberDTO();
+				member.setNo(rs.getInt("no"));
+				member.setName(rs.getString("name"));
+				member.setId(rs.getString("id"));
+				member.setPasswd(rs.getString("passwd"));
+				member.setSsn1(rs.getString("ssn1"));
+				member.setSsn2(rs.getString("ssn2"));
+				member.setEmail(rs.getString("email"));
+				member.setHp1(rs.getString("hp1"));
+				member.setHp2(rs.getString("hp2"));
+				member.setHp3(rs.getString("hp3"));
+				member.setJoindate(rs.getString("joindate"));
+				list.add(member);
+			}
+			
+			con.close();
+			ps.close();
+			rs.close();
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return list;
+	}
+	
+	public int memberDelete(int no) {
+		String sql = "delete from membership where no='"+no+"';";
+		int ret = 0;
+		try {
+			con = DriverManager.getConnection(url, user, pass);
+			ps = con.prepareStatement(sql);
+			ret = ps.executeUpdate();
+			
+			con.close();
+			ps.close();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		
+		return ret;
+	}
+	
+	public int memberUpdate(MemberDTO dto) {
+		System.out.println(dto.getNo());
+		int ret = 0;
+		String sql = "update membership set name='"+dto.getName()+"', ssn1='"+dto.getSsn1()+"', ssn2='"
+				+dto.getSsn2()+"', email='"+dto.getEmail()+"', hp1='"+dto.getHp1()+"', hp2='"+dto.getHp2()+"', hp3='"
+				+dto.getHp3()+"', passwd='"+dto.getPasswd()+"' where no='"+dto.getNo()+"';";
+		try {
+			con = DriverManager.getConnection(url, user, pass);
+			ps = con.prepareStatement(sql);
+			ret = ps.executeUpdate();
+			
+			con.close();
+			ps.close();
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		return ret;
+	}
+	
+	public ArrayList <MemberDTO> getMemberList (String index, String value1){
+		ArrayList <MemberDTO> list = new ArrayList <MemberDTO>();
+		String sql = "select * from membership where "+index+" like '%"+value1+"%';";
+		try {
+			con = DriverManager.getConnection(url, user, pass);
+			ps = con.prepareStatement(sql);
+			rs = ps.executeQuery();
+			
+			while(rs.next()) {
+				MemberDTO member = new MemberDTO();
+				member.setNo(rs.getInt("no"));
+				member.setName(rs.getString("name"));
+				member.setId(rs.getString("id"));
+				member.setPasswd(rs.getString("passwd"));
+				member.setSsn1(rs.getString("ssn1"));
+				member.setSsn2(rs.getString("ssn2"));
+				member.setEmail(rs.getString("email"));
+				member.setHp1(rs.getString("hp1"));
+				member.setHp2(rs.getString("hp2"));
+				member.setHp3(rs.getString("hp3"));
+				member.setJoindate(rs.getString("joindate"));
+				list.add(member);
+			}
+			
+			con.close();
+			ps.close();
+			rs.close();
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		return list;
+	}
+	
+	public ArrayList <MemberDTO> getMemberList (String index, String value1, String value2){
+		ArrayList <MemberDTO> list = new ArrayList <MemberDTO>();
+		String sql = "select * from membership where ("+index+"1 like '%"+value1+"%') and ("+index+"2 like '%"+value2+"%');";
+		try {
+			con = DriverManager.getConnection(url, user, pass);
+			ps = con.prepareStatement(sql);
+			rs = ps.executeQuery();
+			
+			while(rs.next()) {
+				MemberDTO member = new MemberDTO();
+				member.setNo(rs.getInt("no"));
+				member.setName(rs.getString("name"));
+				member.setId(rs.getString("id"));
+				member.setPasswd(rs.getString("passwd"));
+				member.setSsn1(rs.getString("ssn1"));
+				member.setSsn2(rs.getString("ssn2"));
+				member.setEmail(rs.getString("email"));
+				member.setHp1(rs.getString("hp1"));
+				member.setHp2(rs.getString("hp2"));
+				member.setHp3(rs.getString("hp3"));
+				member.setJoindate(rs.getString("joindate"));
+				list.add(member);
+			}
+			
+			con.close();
+			ps.close();
+			rs.close();
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		return list;
+	}
+	
+	public ArrayList <MemberDTO> getMemberList (String index, String value1, String value2, String value3){
+		ArrayList <MemberDTO> list = new ArrayList <MemberDTO>();
+		String sql = "select * from membership where ("+index+"1 like '%"+value1+"%') and ("+index+"2 like '%"+value2+"%') and ("+index+"3 like '%"+value3+"%');";
+		try {
+			con = DriverManager.getConnection(url, user, pass);
+			ps = con.prepareStatement(sql);
+			rs = ps.executeQuery();
+			
+			while(rs.next()) {
+				MemberDTO member = new MemberDTO();
+				member.setNo(rs.getInt("no"));
+				member.setName(rs.getString("name"));
+				member.setId(rs.getString("id"));
+				member.setPasswd(rs.getString("passwd"));
+				member.setSsn1(rs.getString("ssn1"));
+				member.setSsn2(rs.getString("ssn2"));
+				member.setEmail(rs.getString("email"));
+				member.setHp1(rs.getString("hp1"));
+				member.setHp2(rs.getString("hp2"));
+				member.setHp3(rs.getString("hp3"));
+				member.setJoindate(rs.getString("joindate"));
+				list.add(member);
+			}
+			
+			con.close();
+			ps.close();
+			rs.close();
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		return list;
 	}
 	
 }

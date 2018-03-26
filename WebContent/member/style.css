@@ -24,9 +24,9 @@ body{
 	font-family:µ¸¿ò;
 	margin-top:10px;
 	border-radius: 2px;
-	color: black;
-	background-color: pink;
+	color: white;
+	background-color: black;
 	font-size: 8pt;
 	outline:0;
-	border:0;
+	border:1px solid skyblue;
 }
