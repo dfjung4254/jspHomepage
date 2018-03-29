@@ -4,6 +4,17 @@
 <jsp:useBean id="dao" class="home.member.MemberDAO"/>
 <!-- admin_member.jsp -->
 <%@ include file = "top.jsp" %>
+<%
+
+if(!(id.trim().equals("dfjung4254"))){
+	%>
+	<script type="text/javascript">
+		location.href = "index.jsp";
+	</script>
+	<%
+}
+
+%>
 <%@ include file = "subMenu.jsp" %>
 	<div align = "center" style = "width:100%; height:450; overflow:auto;
 	scrollbar-face-color:black;scrollbar-highlight-color:white;scrollbar-track-color:black;">

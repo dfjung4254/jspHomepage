@@ -7,7 +7,27 @@
 				
 				관리자권한:
 				
-				<a href="admin_member.jsp">회원관리</a>
+				<%
+				
+				String admin = (String)session.getAttribute("id");
+				if(admin == null || admin.trim().equals("")){
+					//admin계정
+					%>
+					회원관리
+					<%
+				}else if(admin.equals("dfjung4254")){
+					//일반
+					%>
+					<a href="admin_member.jsp">회원관리</a>
+					<%
+				}else{
+					%>
+					회원관리
+					<%
+				}
+				
+				%>
+
 				
 				</td>
 			</tr>

@@ -210,6 +210,41 @@ public class MemberDAO {
 		return list;
 	}
 	
+	public ArrayList <MemberDTO> newMemberList(String id){
+		ArrayList <MemberDTO> list = new ArrayList <MemberDTO> ();
+		String sql = "select * from membership where id='"+id+"';";
+		try {
+			con = DriverManager.getConnection(url, user, pass);
+			ps = con.prepareStatement(sql);
+			rs = ps.executeQuery();
+			
+			while(rs.next()) {
+				MemberDTO member = new MemberDTO();
+				member.setNo(rs.getInt("no"));
+				member.setName(rs.getString("name"));
+				member.setId(rs.getString("id"));
+				member.setPasswd(rs.getString("passwd"));
+				member.setSsn1(rs.getString("ssn1"));
+				member.setSsn2(rs.getString("ssn2"));
+				member.setEmail(rs.getString("email"));
+				member.setHp1(rs.getString("hp1"));
+				member.setHp2(rs.getString("hp2"));
+				member.setHp3(rs.getString("hp3"));
+				member.setJoindate(rs.getString("joindate"));
+				list.add(member);
+			}
+			
+			con.close();
+			ps.close();
+			rs.close();
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return list;
+	}
+	
 	public int memberDelete(int no) {
 		String sql = "delete from membership where no='"+no+"';";
 		int ret = 0;
@@ -357,6 +392,30 @@ public class MemberDAO {
 		}
 		
 		return list;
+	}
+	
+	public boolean checkId(String id, String passwd) {
+		boolean ret = false;
+		String sql = "select * from membership where (id = '"+id+"') and (passwd = '"+passwd+"');";
+		try {
+			con = DriverManager.getConnection(url, user, pass);
+			ps = con.prepareStatement(sql);
+			rs = ps.executeQuery();
+			
+			ret = rs.next();
+			if(ret) {
+				System.out.println("로그인정보 DB 존재 -> ID : "+id+" PASSWD : "+passwd);
+			}
+			
+			con.close();
+			ps.close();
+			rs.close();
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return ret;
 	}
 	
 }

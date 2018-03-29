@@ -7,14 +7,22 @@
 <%@ include file = "subMenu.jsp" %>
 <%
 request.setCharacterEncoding("EUC-KR");
-int no = Integer.parseInt(request.getParameter("no"));
+String val = request.getParameter("no");
+ArrayList <MemberDTO> dto;
 
-ArrayList <MemberDTO> dto = dao.newMemberList(no);
+if(val == null || val.trim().equals("")){
+	val = request.getParameter("id");
+	System.out.println(val);
+	dto = dao.newMemberList(val);
+}else{
+	int no = Integer.parseInt(val);
+	dto = dao.newMemberList(no);
+}
 
 %>
 	<div align = "center" style = "width:100%; height:450; overflow:auto;
 	scrollbar-face-color:black;scrollbar-highlight-color:white;scrollbar-track-color:black;">
-		<div style="margin-bottom:20px;margin-top:80px;letter-spacing:0.2em;font-family:돋움;font-size:14pt;">관리자 회원정보수정</div>
+		<div style="margin-bottom:20px;margin-top:80px;letter-spacing:0.2em;font-family:돋움;font-size:14pt;">회원정보수정</div>
 		<form name="updateMember" method="post" action="admin_memberUpdateCheck.jsp">
 		<div style="display:table;width:500px;font-size:9pt;">
 			<div style="display:table-row">

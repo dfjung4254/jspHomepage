@@ -32,11 +32,28 @@
 				<tr height = "5%">
 					<td colspan = "2" align = "center">
 					<menu>
-					<a href = "<%=request.getContextPath() %>/index.jsp">MAIN</a> | 
-					<a href = "<%=request.getContextPath() %>/login.jsp">LOGIN</a> | 
-					<a href = "javascript:open_member_check()">MEMBER</a> | 
-					<a href = "<%=request.getContextPath() %>/board.jsp">BOARD</a> | 
-					<a href = "<%=request.getContextPath() %>/intro.jsp">INTRO</a>
+					<a href = "index.jsp">MAIN</a> | 
+					<%
+					
+					String id = (String)session.getAttribute("id");
+					if(id == null || id.trim().equals("")){
+						%>
+						<a href = "login.jsp">LOGIN</a> | 
+						<a href = "javascript:open_member_check()">MEMBER</a> | 
+						<%
+					}else{
+						%>
+						<a href = "logout.jsp">LOGOUT</a> |
+						<a href = "admin_memberUpdate.jsp?id=<%= id %>">MYPAGE</a> |
+						<%
+					}
+					
+					
+					
+					%>
+
+					<a href = "board.jsp">BOARD</a> | 
+					<a href = "intro.jsp">INTRO</a>
 					</menu>
 					</td>
 				</tr>
