@@ -7,6 +7,23 @@ request.setCharacterEncoding("EUC-KR");
 
 String id = request.getParameter("id");
 String passwd = request.getParameter("passwd");
+String memorizeId = request.getParameter("memorizeId");
+
+if(memorizeId == null || memorizeId.trim().equals("")){
+	//아이디기억 미체크
+	Cookie[] cks = request.getCookies();
+	for(int i = 0; i < cks.length; i++){
+		if(cks[i].getName().equals("memorizeId")){
+			cks[i].setMaxAge(0);
+			response.addCookie(cks[i]);
+		}
+	}
+}else if(memorizeId.equals("memorizeId")){
+	//아이디기억 체크
+	Cookie ck = new Cookie("memorizeId", id);
+	ck.setMaxAge(60*60*24);
+	response.addCookie(ck);
+}
 
 boolean isMember = dao.checkId(id, passwd);
 

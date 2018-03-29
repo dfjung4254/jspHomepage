@@ -1,5 +1,18 @@
 <%@ page language="java" contentType="text/html; charset=EUC-KR"
     pageEncoding="EUC-KR"%>
+<%
+
+String id = (String)session.getAttribute("id");
+if(id == null || id.trim().equals("")){
+	%>
+	<script type="text/javascript">
+		alert("먼저 로그인을 하십시오");
+		location.href = "../login.jsp";
+	</script>
+	<%
+}
+
+%>
 <html>
 <head>
 	<title>도서등록 페이지</title>
