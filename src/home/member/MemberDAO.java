@@ -15,6 +15,7 @@ import javax.sql.DataSource;
 public class MemberDAO {
 	
 	//member Variables
+	static DataSource ds;
 	Connection con;
 	PreparedStatement ps;
 	ResultSet rs;
@@ -23,8 +24,12 @@ public class MemberDAO {
 //	String user;
 //	String pass;
 	
-	static DataSource ds;
-	static {
+
+	
+	//Constructor
+	public MemberDAO() {
+		
+		//Connection Pool 사용.
 		try {
 			Context init = new InitialContext();
 			ds = (DataSource) init.lookup("java:comp/env/jdbc/mysql");
@@ -32,11 +37,7 @@ public class MemberDAO {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-	}
-	
-	//Constructor
-	public MemberDAO() {
-		
+//-----------------------------------이전 연습용. 커넥션풀 미사용.-------------------
 //		try {
 //			Class.forName("com.mysql.jdbc.Driver");
 //			System.out.println("드라이버등록 성공");
@@ -49,7 +50,7 @@ public class MemberDAO {
 //		url = "jdbc:mysql://13.125.191.119:3306/jkh_homepage";
 //		user = "jkh";
 //		pass = "rmsghk4254";
-		
+		//-----------------------------------이전 연습용. 커넥션풀 미사용.-------------------		
 	}
 	
 	//Methods
