@@ -52,7 +52,7 @@
 					
 					%>
 
-					<a href = "board.jsp">BOARD</a> | 
+					<a href = "board.jsp?page=1">BOARD</a> | 
 					<a href = "intro.jsp">INTRO</a>
 					</menu>
 					</td>
