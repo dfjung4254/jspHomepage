@@ -31,7 +31,7 @@
     	auth="Container"
     	type="javax.sql.DataSource"
     	driverClassName="com.mysql.jdbc.Driver"
-    	url="jdbc:mysql://13.125.191.119:3306/jkh_homepage"
+    	url="jdbc:mysql://13.125.191.119:3306/jkh_homepage?autoReconnect=true"
     	username="jkh"
     	password="rmsghk4254"
     	maxAcive="50"	

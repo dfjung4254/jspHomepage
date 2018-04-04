@@ -435,4 +435,28 @@ public class MemberDAO {
 		return ret;
 	}
 	
+	public String getValue(String valueType, String value, String getType) {
+		String ret = "";
+		String sql = "select * from membership where "+valueType+"='"+value+"';";
+		try {
+			con = ds.getConnection();
+			ps = con.prepareStatement(sql);
+			rs = ps.executeQuery();
+			
+			while(rs.next()) {
+				ret = rs.getString(getType);
+			}
+			
+			con.close();
+			ps.close();
+			rs.close();
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		return ret;
+	}
+	
 }
