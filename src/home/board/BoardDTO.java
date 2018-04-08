@@ -16,6 +16,7 @@ public class BoardDTO {
 	private String title;
 	private String contents;
 	private String email;
+	private String writer_id;
 	
 	//constructor
 	public BoardDTO() {
@@ -23,6 +24,14 @@ public class BoardDTO {
 	}
 	
 	//method(get/set)
+	public String getWriter_id() {
+		return writer_id;
+	}
+	
+	public void setWriter_id(String writer_id) {
+		this.writer_id = writer_id;
+	}
+	
 	public int getNo() {
 		return no;
 	}

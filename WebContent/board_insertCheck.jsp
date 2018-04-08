@@ -9,6 +9,7 @@ String writer = request.getParameter("name");
 String title = request.getParameter("title");
 String contents = request.getParameter("contents");
 String email = request.getParameter("email");
+String writer_id = request.getParameter("id");
 
 //유효성검사
 if(title == null || title.trim().equals("")){
@@ -27,7 +28,7 @@ if(title == null || title.trim().equals("")){
 	<%
 }
 
-int ret = dao.newContents(writer, title, contents, email);
+int ret = dao.newContents(writer, title, contents, email, writer_id);
 
 if(ret > 0){
 	%>

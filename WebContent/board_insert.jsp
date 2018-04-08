@@ -89,6 +89,7 @@
 					</div>
 				</div>
 			</div>
+			<input type="hidden" value="<%=member_id%>" name="id">
 			</form>
 		</div>
 	</div>

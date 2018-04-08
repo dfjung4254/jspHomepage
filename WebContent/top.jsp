@@ -21,6 +21,17 @@
 				document.updateMember.submit();
 			}
 		}
+		function delConfirm(num){
+			if(confirm("정말 삭제하시겠습니까??")){
+				location.href = "board_delete.jsp?no="+num;
+			}
+		}
+		function updateCheck(){
+			if(confirm("수정하시겠습니까??")){
+				document.board_update.submit();
+			}
+		}
+		
 	</script>
 	
 </head>

@@ -34,10 +34,10 @@ public class BoardDAO {
 	}
 	
 	//methods
-	public int newContents(String writer, String title, String contents, String email) {
+	public int newContents(String writer, String title, String contents, String email, String writer_id) {
 		int ret = 0;
-		String sql = "insert into board (writer, title, contents, email, date, views)"
-				+ "value (?,?,?,?,now(),0);";
+		String sql = "insert into board (writer, title, contents, email, date, views, writer_id)"
+				+ "value (?,?,?,?,now(),0,?);";
 		try {
 			con = ds.getConnection();
 			ps = con.prepareStatement(sql);
@@ -45,6 +45,7 @@ public class BoardDAO {
 			ps.setString(2, title);
 			ps.setString(3, contents);
 			ps.setString(4, email);
+			ps.setString(5,  writer_id);
 			ret = ps.executeUpdate();
 			
 			con.close();
@@ -105,6 +106,7 @@ public class BoardDAO {
 				board.setTitle(rs.getString("title"));
 				board.setContents(rs.getString("contents"));
 				board.setEmail(rs.getString("email"));
+				board.setWriter_id(rs.getString("writer_id"));
 				list.add(board);
 			}
 			
@@ -119,5 +121,99 @@ public class BoardDAO {
 		System.out.println(list.get(0).getTitle());
 		return list;
 	}
+	
+	public BoardDTO getContents(int no) {
+		BoardDTO contents = new BoardDTO();
+		String sql = "select * from board where no='"+no+"';";
+		try {
+			con = ds.getConnection();
+			ps = con.prepareStatement(sql);
+			rs = ps.executeQuery();
+			
+			while(rs.next()) {
+				contents.setContents(rs.getString("contents"));
+				contents.setDate(rs.getDate("date"));
+				contents.setEmail(rs.getString("email"));
+				contents.setNo(rs.getInt("no"));
+				contents.setTitle(rs.getString("title"));
+				contents.setViews(rs.getInt("views"));
+				contents.setWriter(rs.getString("writer"));
+				contents.setWriter_id(rs.getString("writer_id"));
+			}
+			
+			con.close();
+			ps.close();
+			rs.close();
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		
+		return contents;
+	}
 
+	public int deleteContents(String no) {
+		int ret = 0;
+		String sql = "delete from board where no='"+no+"';";
+		try {
+			con = ds.getConnection();
+			ps = con.prepareStatement(sql);
+			ret = ps.executeUpdate();
+			
+			con.close();
+			ps.close();
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		return ret;
+	}
+	
+	public String getValue(String valueType, String value, String returnType) {
+		String ret = "";
+		String sql = "select * from board where "+valueType+"='"+value+"';";
+		try {
+			con = ds.getConnection();
+			ps = con.prepareStatement(sql);
+			rs = ps.executeQuery();
+			
+			while(rs.next()) {
+				ret = rs.getString(returnType);
+			}
+			
+			con.close();
+			ps.close();
+			rs.close();
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		return ret;
+	}
+	
+	public int updateContents(int no, String title, String contents, String email) {
+		int ret = 0;
+		String sql = "update board set title='"+title+"', contents='"+contents+"', email='"+email+"' where no='"+no+"';";
+		try {
+			con = ds.getConnection();
+			ps = con.prepareStatement(sql);
+			ret = ps.executeUpdate();
+			
+			con.close();
+			ps.close();
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		return ret;
+	}
+	
 }
