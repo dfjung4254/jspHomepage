@@ -11,7 +11,7 @@
 	%>
 	<div align="center" style="width:100%; height:450;overflow:auto;
 	scrollbar-face-color:black;scrollbar-highlight-color:white;scrollbar-track-color:black;">
-		<div style="font-size:20pt;font-family:consolas;color:skyblue;letter-spacing:0.2em;margin-top:15%;">
+		<div style="font-size:20pt;font-family:consolas;color:skyblue;letter-spacing:0.2em;margin-top:8%;">
 			BOARD
 		</div>
 		<div style="display:table;width:90%;margin-top:15px;">
@@ -58,14 +58,25 @@
 			}else{
 				SimpleDateFormat origin_form = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 				SimpleDateFormat new_form = new SimpleDateFormat("MM/dd HH:mm");
-				for(int i = list.size()-1; i >= 0; i--){
+				for(int i = 0; i < list.size(); i++){
 					%>
 					<div style="display:table-row;height:25px;">
 						<div style="display:table-cell;width:10%;vertical-align:middle;border-top:1px solid lightgray;border-bottom:1px solid lightgray;font-size:9pt;font-family:µ¸¿ò;color:gray;">
 							<%= list.get(i).getNo() %>
 						</div>
 						<div style="display:table-cell;vertical-align:middle;border-top:1px solid lightgray;border-bottom:1px solid lightgray;font-size:9pt;font-family:µ¸¿ò;color:gray;">
-							<%= list.get(i).getTitle() %>
+							<%
+							//·Î±×ÀÎ È®ÀÎ ÇÏÀÌÆÛ¸µÅ©
+							if(id==null || id.trim().equals("")){
+								%>
+								<%= list.get(i).getTitle() %>
+								<%
+							}else{
+								%>
+								<div onmouseover="this.style.color='white'" onmouseout="this.style.color='gray'"style="cursor:default" onclick="location.href='board_view.jsp?no=<%= list.get(i).getNo() %>'"><%= list.get(i).getTitle() %></div>
+								<% 
+							}
+							%>
 						</div>
 						<div style="display:table-cell;width:10%;vertical-align:middle;border-top:1px solid lightgray;border-bottom:1px solid lightgray;font-size:9pt;font-family:µ¸¿ò;color:gray;">
 							<%= list.get(i).getWriter() %>

@@ -4,10 +4,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Date;
 
 import javax.naming.Context;
 import javax.naming.InitialContext;
@@ -39,7 +36,7 @@ public class BoardDAO {
 		ArrayList <BoardDTO> list = new ArrayList <BoardDTO>();
 		int maxSet = page_no*10;
 		int minSet = page_no*10-11;
-		String sql = "select * from board where list_index < ? and list_index > ?;";
+		String sql = "select * from board where list_index < ? and list_index > ? order by list_index;";
 		
 		try {
 			con = ds.getConnection();
@@ -132,6 +129,59 @@ public class BoardDAO {
 		}
 		
 		return ret;
+	}
+	
+	public BoardDTO getContents(int no) {
+		BoardDTO contents = new BoardDTO();
+		String sql = "select * from board where no=?;";
+		try {
+			con = ds.getConnection();
+			ps = con.prepareStatement(sql);
+			ps.setInt(1, no);
+			rs = ps.executeQuery();
+			
+			while(rs.next()) {
+				contents.setNo(rs.getInt("no"));
+				contents.setWriter(rs.getString("writer"));
+				contents.setWriter_id(rs.getString("writer_id"));
+				contents.setWriter_ip(rs.getString("writer_ip"));
+				contents.setTitle(rs.getString("title"));
+				contents.setContents(rs.getString("contents"));
+				contents.setEmail(rs.getString("email"));
+				contents.setViews(rs.getInt("views"));
+				contents.setList_index(rs.getInt("list_index"));
+				contents.setList_indexLevel(rs.getInt("list_indexLevel"));
+				contents.setDate(rs.getString("date"));
+			}
+			
+			con.close();
+			ps.close();
+			rs.close();
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		return contents;
+	}
+	
+	public void plusViewCounts(int no) {
+		String sql = "update board set views=views+1 where no=?";
+		try {
+			con = ds.getConnection();
+			ps = con.prepareStatement(sql);
+			ps.setInt(1, no);
+			ps.executeUpdate();
+			
+			con.close();
+			ps.close();
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
 	}
 
 }
