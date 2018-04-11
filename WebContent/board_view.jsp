@@ -8,11 +8,14 @@
 <%
 
 	request.setCharacterEncoding("EUC-KR");
+	String ip = request.getLocalAddr();
+	
 
 	String member_name = "";
 	String member_email = "";
 	String member_id = (String)session.getAttribute("id");
 	int board_no = Integer.parseInt(request.getParameter("no"));
+	System.out.println(ip+" 에서 "+board_no+"번 글 읽음.");
 	BoardDTO dto = b_dao.getContents(board_no);
 	if(member_id == null || member_id.trim().equals("")){
 		//비로그인상태(접근제한)
@@ -28,6 +31,7 @@
 		//로그인상태(id이용 사용자정보 가져와야함)
 		member_name = dao.getValue("id", member_id, "name");
 		member_email = dao.getValue("id", member_id, "email");
+		b_dao.view_update(board_no);
 	}
 
 %>
@@ -67,14 +71,16 @@
 			</div>
 			<div style="display:table;width:550px;font-size:10pt;font-family:돋움;margin-top:10px;">
 				<div style="display:table-row">
-					<div style="display:table-cell;padding-bottom:10px;border-bottom:1px solid gray;">
+					<div style="display:table-cell;padding-bottom:10px;border-bottom:1px solid gray;text-align:left">
+					<!-- 
 						<textarea name="contents" disabled style="overflow:auto;
 						scrollbar-face-color:black;scrollbar-highlight-color:white;
 						scrollbar-track-color:black;width:500px;height:180px;
 						background-color:black;color:white;border:1px solid white;padding:8px;font-size:10pt;
-						font-family:돋움;" >
+						font-family:돋움;text-align:left;" >
+						-->
 						<%=dto.getContents() %>
-						</textarea>
+						<!-- </textarea>  -->
 					</div>
 				</div>
 			</div>

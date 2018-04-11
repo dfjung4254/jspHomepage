@@ -2,36 +2,26 @@ package home.board;
 
 import java.util.Date;
 
-/**
- * @author JKH
- *
- */
 public class BoardDTO {
-
+	
 	//member variables
 	private int no;
 	private String writer;
-	private Date date;
-	private int views;
+	private String writer_id;
+	private String writer_ip;
 	private String title;
 	private String contents;
 	private String email;
-	private String writer_id;
+	private int views;
+	private int list_index;
+	private int list_indexLevel;
+	private String date;
 	
 	//constructor
 	public BoardDTO() {
 		
 	}
-	
-	//method(get/set)
-	public String getWriter_id() {
-		return writer_id;
-	}
-	
-	public void setWriter_id(String writer_id) {
-		this.writer_id = writer_id;
-	}
-	
+	//methods(setter / getter)
 	public int getNo() {
 		return no;
 	}
@@ -48,20 +38,20 @@ public class BoardDTO {
 		this.writer = writer;
 	}
 
-	public Date getDate() {
-		return date;
+	public String getWriter_id() {
+		return writer_id;
 	}
 
-	public void setDate(Date date) {
-		this.date = date;
+	public void setWriter_id(String writer_id) {
+		this.writer_id = writer_id;
 	}
 
-	public int getViews() {
-		return views;
+	public String getWriter_ip() {
+		return writer_ip;
 	}
 
-	public void setViews(int views) {
-		this.views = views;
+	public void setWriter_ip(String writer_ip) {
+		this.writer_ip = writer_ip;
 	}
 
 	public String getTitle() {
@@ -88,5 +78,36 @@ public class BoardDTO {
 		this.email = email;
 	}
 
+	public int getViews() {
+		return views;
+	}
+
+	public void setViews(int views) {
+		this.views = views;
+	}
+
+	public int getList_index() {
+		return list_index;
+	}
+
+	public void setList_index(int list_index) {
+		this.list_index = list_index;
+	}
+
+	public int getList_indexLevel() {
+		return list_indexLevel;
+	}
+
+	public void setList_indexLevel(int list_indexLevel) {
+		this.list_indexLevel = list_indexLevel;
+	}
+	
+	public String getDate() {
+		return date;
+	}
+	
+	public void setDate(String date) {
+		this.date = date;
+	}
 	
 }

@@ -3,12 +3,12 @@
 <html>
 <head>
 	<title>JKH 의 홈페이지입니다</title>
-	<link rel = "stylesheet" type = "text/css" href = "style.css?ver=1">
+	<link rel = "stylesheet" type = "text/css" href = "<%=request.getContextPath() %>/style.css?ver=1">
 	
 	<script type="text/javascript">
 		function open_member_check(){
 			window.name = "mainWindow";
-			window.open("member/member_check.jsp", "member", "width=500, height=300, resizable=no, left=600, top=300");
+			window.open("<%=request.getContextPath() %>/member/member_check.jsp", "member", "width=500, height=300, resizable=no, left=600, top=300");
 		}
 		function member_delete(num){
 			if(confirm("정말 삭제하시겠습니까??")){
@@ -43,19 +43,19 @@
 				<tr height = "5%">
 					<td colspan = "2" align = "center">
 					<menu>
-					<a href = "index.jsp">MAIN</a> | 
+					<a href = "<%=request.getContextPath() %>/index.jsp">MAIN</a> | 
 					<%
 					
 					String id = (String)session.getAttribute("id");
 					if(id == null || id.trim().equals("")){
 						%>
-						<a href = "login.jsp">LOGIN</a> | 
+						<a href = "<%=request.getContextPath() %>/login.jsp">LOGIN</a> | 
 						<a href = "javascript:open_member_check()">MEMBER</a> | 
 						<%
 					}else{
 						%>
-						<a href = "logout.jsp">LOGOUT</a> |
-						<a href = "admin_memberUpdate.jsp?id=<%= id %>">MYPAGE</a> |
+						<a href = "<%=request.getContextPath() %>/logout.jsp">LOGOUT</a> |
+						<a href = "<%=request.getContextPath() %>/admin_memberUpdate.jsp?id=<%= id %>">MYPAGE</a> |
 						<%
 					}
 					
@@ -63,8 +63,8 @@
 					
 					%>
 
-					<a href = "board.jsp?page=1">BOARD</a> | 
-					<a href = "intro.jsp">INTRO</a>
+					<a href = "<%=request.getContextPath() %>/hyper_board/board_list.jsp?page=1">BOARD</a> | 
+					<a href = "<%=request.getContextPath() %>/intro.jsp">INTRO</a>
 					</menu>
 					</td>
 				</tr>

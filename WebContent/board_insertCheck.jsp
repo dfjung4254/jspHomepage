@@ -19,6 +19,7 @@ if(title == null || title.trim().equals("")){
 		history.back();
 	</script>
 	<%
+	return;
 }else if(contents == null || contents.trim().equals("")){
 	%>
 	<script type="text/javascript">
@@ -26,6 +27,7 @@ if(title == null || title.trim().equals("")){
 		history.back();
 	</script>
 	<%
+	return;
 }
 
 int ret = dao.newContents(writer, title, contents, email, writer_id);
