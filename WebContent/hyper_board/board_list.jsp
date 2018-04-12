@@ -64,16 +64,29 @@
 						<div style="display:table-cell;width:10%;vertical-align:middle;border-top:1px solid lightgray;border-bottom:1px solid lightgray;font-size:9pt;font-family:돋움;color:gray;">
 							<%= list.get(i).getNo() %>
 						</div>
-						<div style="display:table-cell;vertical-align:middle;border-top:1px solid lightgray;border-bottom:1px solid lightgray;font-size:9pt;font-family:돋움;color:gray;">
+						<div style="display:table-cell;vertical-align:middle;border-top:1px solid lightgray;text-align:left;border-bottom:1px solid lightgray;font-size:9pt;font-family:돋움;color:gray;">
 							<%
-							//로그인 확인 하이퍼링크
+							//로그인 확인 하이퍼링크, 답글등급구분
+							String title = list.get(i).getTitle();
+							if(list.get(i).getList_indexLevel()!=0){
+								title = "└→"+title;
+							}
+
+							for(int j = 0; j < list.get(i).getList_indexLevel(); j++){
+								title = "&nbsp;&nbsp;"+title;
+							}
+
 							if(id==null || id.trim().equals("")){
 								%>
-								<%= list.get(i).getTitle() %>
+								<%= title %>
+								<%
+							}else if(list.get(i).getTitle().contains("삭제된게시글입니다") && !(id.trim().equals("dfjung4254"))){
+								%>
+								<%= title %>
 								<%
 							}else{
 								%>
-								<div onmouseover="this.style.color='white'" onmouseout="this.style.color='gray'"style="cursor:default" onclick="location.href='board_view.jsp?no=<%= list.get(i).getNo() %>'"><%= list.get(i).getTitle() %></div>
+								<div onmouseover="this.style.color='white'" onmouseout="this.style.color='gray'"style="cursor:default" onclick="location.href='board_view.jsp?no=<%= list.get(i).getNo() %>'"><%= title %></div>
 								<% 
 							}
 							%>

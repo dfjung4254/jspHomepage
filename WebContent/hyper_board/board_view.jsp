@@ -23,6 +23,16 @@ int no = Integer.parseInt(request.getParameter("no"));
 dao.plusViewCounts(no);
 BoardDTO article = dao.getContents(no);
 
+if(article.getTitle().contains("삭제된게시글입니다") && !(id.equals("dfjung4254"))){
+	%>
+	<script type="text/javascript">
+		alert("삭제된게시물입니다");
+		location.href="board_list.jsp?page=1";
+	</script>
+	<%
+	return;
+}
+
 
 %>
 	<div align="center">
@@ -40,7 +50,7 @@ BoardDTO article = dao.getContents(no);
 						&nbsp;
 						 IP 
 						&nbsp;&nbsp;
-						<input name="writer_ip" value="<%= article.getWriter_ip() %>" readonly type="text" style="height:100%;color:lightgray;width:20%;text-align:center;background-color:black;border:0px dotted lightgray;font-size:9pt;" >
+						<input name="writer_ip" value="<%= article.getWriter_ip() %>" readonly type="text" style="height:100%;color:lightgray;width:25%;text-align:center;background-color:black;border:0px dotted lightgray;font-size:9pt;" >
 					</div>
 				</div> 
 				<div style="display:table-row">
@@ -52,7 +62,7 @@ BoardDTO article = dao.getContents(no);
 						&nbsp;
 						 DATE
 						&nbsp;&nbsp;
-						<input name="writer_ip" value="<%= article.getDate() %>" readonly type="text" style="height:100%;color:lightgray;width:20%;text-align:center;text-align:center;background-color:black;border:0px dotted lightgray;font-size:9pt;" >
+						<input name="writer_ip" value="<%= article.getDate() %>" readonly type="text" style="height:100%;color:lightgray;width:25%;text-align:center;text-align:center;background-color:black;border:0px dotted lightgray;font-size:9pt;" >
 					</div>
 				</div>
 				<div style="display:table-row">
@@ -64,7 +74,7 @@ BoardDTO article = dao.getContents(no);
 						&nbsp;
 						 VIEWS
 						&nbsp;&nbsp;
-						<input name="writer_ip" value="<%= article.getViews() %>" readonly type="text" style="height:100%;color:lightgray;width:20%;text-align:center;text-align:center;background-color:black;border:0px dotted lightgray;font-size:9pt;" >
+						<input name="writer_ip" value="<%= article.getViews() %>" readonly type="text" style="height:100%;color:lightgray;width:25%;text-align:center;text-align:center;background-color:black;border:0px dotted lightgray;font-size:9pt;" >
 					</div>
 				</div>
 				<div style="display:table-row">
@@ -87,14 +97,17 @@ BoardDTO article = dao.getContents(no);
 			</div>
 			<div style="display:table;width:90%;margin-top:10px">
 				<div style="display:table-row">
-					<div style="display:table-cell;border-top:2px solid white;padding-top:5px;text-align:right;padding-right:20px;">
+					<div style="display:table-cell;border-top:2px solid white;padding-top:5px;text-align:center;padding-right:20px;">
 						<input type="submit" value="수정" style="background-color:black;border:1px solid white;color:white;">
 					</div>
-					<div style="display:table-cell;border-top:2px solid white;padding-top:5px;text-align:right;padding-right:20px;">
+					<div style="display:table-cell;border-top:2px solid white;padding-top:5px;text-align:center;padding-right:20px;">
+						<input type="button" value="삭제" style="background-color:black;border:1px solid white;color:white;" onclick="javascript:delConfirm(<%= no %>)">
+					</div>
+					<div style="display:table-cell;border-top:2px solid white;padding-top:5px;text-align:center;padding-right:20px;">
 						<input type="button" value="답글" style="background-color:black;border:1px solid white;color:white;" onclick="location.href='board_insert.jsp?index=<%= article.getList_index()+1 %>&level=<%= article.getList_indexLevel()+1 %>'">
 					</div>
-					<div style="display:table-cell;border-top:2px solid white;padding-top:5px;text-align:left;padding-left:20px;">
-						<input type="button" value="취소" style="background-color:black;border:1px solid white;color:white;" onclick="history.back()">
+					<div style="display:table-cell;border-top:2px solid white;padding-top:5px;text-align:center;padding-left:20px;">
+						<input type="button" value="뒤로" style="background-color:black;border:1px solid white;color:white;" onclick="history.back()">
 					</div>
 				</div>		
 			</div>

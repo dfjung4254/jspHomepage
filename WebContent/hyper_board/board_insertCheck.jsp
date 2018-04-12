@@ -13,7 +13,6 @@ String contents = request.getParameter("contents");
 String email = request.getParameter("email");
 int list_index = Integer.parseInt(request.getParameter("list_index"));
 int list_indexLevel = Integer.parseInt(request.getParameter("list_indexLevel"));
-
 int ret = dao.insertContents(writer, writer_id, writer_ip, title, contents, email, list_index, list_indexLevel);
 
 if(ret >0){

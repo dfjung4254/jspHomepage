@@ -181,7 +181,119 @@ public class BoardDAO {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+	}
+	
+	public String getValue(String valueType, String value, String getType) {
+		String ret = "";
+		String sql = "select * from board where "+valueType+"='"+value+"';";
+		try {
+			con = ds.getConnection();
+			ps = con.prepareStatement(sql);
+			rs = ps.executeQuery();
+			
+			while(rs.next()) {
+				if(getType.equals("no") || getType.equals("views") || getType.equals("list_index") || getType.equals("list_indexLevel")) {
+					ret = String.valueOf(rs.getInt(getType));
+				}else {
+					ret = rs.getString(getType);
+				}
+			}
+			
+			con.close();
+			ps.close();
+			rs.close();
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		System.out.println("DB 불러온 값 : "+ret);
+		return ret;
+	}
+	
+	public int deleteContents(int no, int list_index) {
+		int ret = 0;
 		
+		String sql = "delete from board where no=?;";
+		try {
+			con = ds.getConnection();
+			//list_index 1씩 감소
+			ps = con.prepareStatement("update board set list_index=list_index-1 where list_index>?;");
+			ps.setInt(1, list_index);
+			ps.executeUpdate();
+			
+			ps = con.prepareStatement(sql);
+			ps.setInt(1, no);
+			ret = ps.executeUpdate();
+			
+			con.close();
+			ps.close();
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return ret;
+	}
+	
+	public int deleteContents_update(int no, int list_indexLevel) {
+		int ret = 0;
+		String title = "삭제된게시글입니다";
+		String sql = "update board SET title='"+title+"' where no="+no+";";
+		try {
+			con = ds.getConnection();
+			ps = con.prepareStatement(sql);
+			ret = ps.executeUpdate();
+			
+			con.close();
+			ps.close();
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return ret;
+	}
+	
+	public boolean checkAnswer(int list_index) {
+		boolean ret = false;
+		int list_indexLevel = 0;
+		int list_searchLevel = 0;
+		String sql = "select list_indexLevel from board where list_index='"+list_index+"';";
+		try {
+			con = ds.getConnection();
+			ps = con.prepareStatement(sql);
+			rs = ps.executeQuery();
+			while(rs.next()) {
+				list_indexLevel = rs.getInt("list_indexLevel");
+			}
+			
+			ps = con.prepareStatement("select list_indexLevel from board where list_index='"+(list_index+1)+"';");
+			rs = ps.executeQuery();
+			while(rs.next()) {
+				list_searchLevel = rs.getInt("list_indexLevel");
+			}
+			if(list_indexLevel < list_searchLevel) {
+				//답글존재
+				ret = true;
+			}else {
+				//답글존재x
+				ret = false;
+			}
+			
+			System.out.println(ret);
+			System.out.println(list_indexLevel);
+			System.out.println(list_searchLevel);
+			
+			con.close();
+			ps.close();
+			rs.close();
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return ret;
 	}
 
 }
