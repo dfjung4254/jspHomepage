@@ -39,7 +39,7 @@ if(article.getTitle().contains("삭제된게시글입니다") && !(id.equals("dfjung4254"
 		<div style="font-size:20pt;font-family:consolas;color:skyblue;letter-spacing:0.2em;">
 			ARTICLE
 		</div>
-		<form name="board_insert" method="post" action="board_update.jsp?no=<%= no %>">
+		<form name="board_insert" method="post" action="board_update.jsp">
 			<div style="display:table; width:90%;margin-top:15px;">
 				<div style="display:table-row">
 					<div style="display:table-cell;padding:3px;width:20%;border-top:2px solid white;font-family:consolas;font-size:9pt;">
@@ -62,7 +62,7 @@ if(article.getTitle().contains("삭제된게시글입니다") && !(id.equals("dfjung4254"
 						&nbsp;
 						 DATE
 						&nbsp;&nbsp;
-						<input name="writer_ip" value="<%= article.getDate() %>" readonly type="text" style="height:100%;color:lightgray;width:25%;text-align:center;text-align:center;background-color:black;border:0px dotted lightgray;font-size:9pt;" >
+						<input name="date" value="<%= article.getDate() %>" readonly type="text" style="height:100%;color:lightgray;width:25%;text-align:center;text-align:center;background-color:black;border:0px dotted lightgray;font-size:9pt;" >
 					</div>
 				</div>
 				<div style="display:table-row">
@@ -74,7 +74,7 @@ if(article.getTitle().contains("삭제된게시글입니다") && !(id.equals("dfjung4254"
 						&nbsp;
 						 VIEWS
 						&nbsp;&nbsp;
-						<input name="writer_ip" value="<%= article.getViews() %>" readonly type="text" style="height:100%;color:lightgray;width:25%;text-align:center;text-align:center;background-color:black;border:0px dotted lightgray;font-size:9pt;" >
+						<input name="views" value="<%= article.getViews() %>" readonly type="text" style="height:100%;color:lightgray;width:25%;text-align:center;text-align:center;background-color:black;border:0px dotted lightgray;font-size:9pt;" >
 					</div>
 				</div>
 				<div style="display:table-row">
@@ -82,9 +82,11 @@ if(article.getTitle().contains("삭제된게시글입니다") && !(id.equals("dfjung4254"
 						CONTENTS
 					</div>
 					<div style="border-bottom:2px solid white;display:table-cell;padding:3px;text-align:left;">
-						<input name="writer_id" value="<%= id %>" type="hidden" style="height:100%;width:90%;background-color:black;border:1px dotted lightgray;font-size:9pt;">
+						<input name="writer_id" value="<%= article.getWriter_id() %>" type="hidden" style="height:100%;width:90%;background-color:black;border:1px dotted lightgray;font-size:9pt;">
 						<input name="list_index" value="<%= article.getList_index() %>" type="hidden" style="height:100%;width:90%;background-color:black;border:1px dotted lightgray;font-size:9pt;">
 						<input name="list_indexLevel" value="<%= article.getList_indexLevel() %>" type="hidden" style="height:100%;width:90%;background-color:black;border:1px dotted lightgray;font-size:9pt;">
+						<input name="no" value="<%= article.getNo() %>" type="hidden" >
+						<input name="contents" value="<%= article.getContents() %>" type="hidden" >
 					</div>
 				</div>
 			</div>

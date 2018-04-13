@@ -295,5 +295,28 @@ public class BoardDAO {
 		}
 		return ret;
 	}
+	
+	public int updateContents(BoardDTO article) {
+		int ret = 0;
+		String sql = "update board SET writer_ip=?, title=?, contents=?, email=?, date=now() where no=?;";
+		try {
+			con = ds.getConnection();
+			ps = con.prepareStatement(sql);
+			ps.setString(1, article.getWriter_ip());
+			ps.setString(2, article.getTitle());
+			ps.setString(3, article.getContents());
+			ps.setString(4, article.getEmail());
+			ps.setInt(5, article.getNo());
+			ret = ps.executeUpdate();
+			
+			con.close();
+			ps.close();
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return ret;
+	}
 
 }
