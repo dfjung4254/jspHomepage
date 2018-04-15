@@ -31,11 +31,6 @@
 				document.board_update.submit();
 			}
 		}
-		function replyCheck(){
-			if(confirm("댓글다시겠습니까?")){
-				document.b_reply.submit();
-			}
-		}
 		
 	</script>
 	

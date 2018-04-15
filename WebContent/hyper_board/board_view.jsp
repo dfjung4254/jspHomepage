@@ -110,13 +110,32 @@ if(article.getTitle().contains("삭제된게시글입니다") && !(id.equals("dfjung4254"
 					</div>
 				</div>		
 			</div>
-			<!-- Replys -->
+			<!-- BTNs -->
+			<div style="display:table;width:90%;margin-top:10px">
+				<div style="display:table-row">
+					<div style="display:table-cell;border-top:2px solid white;padding-top:5px;text-align:center;padding-right:20px;">
+						<input type="submit" value="수정" style="background-color:black;border:1px solid white;color:white;">
+					</div>
+					<div style="display:table-cell;border-top:2px solid white;padding-top:5px;text-align:center;padding-right:20px;">
+						<input type="button" value="삭제" style="background-color:black;border:1px solid white;color:white;" onclick="javascript:delConfirm(<%= no %>)">
+					</div>
+					<div style="display:table-cell;border-top:2px solid white;padding-top:5px;text-align:center;padding-right:20px;">
+						<input type="button" value="답글" style="background-color:black;border:1px solid white;color:white;" onclick="location.href='board_insert.jsp?index=<%= article.getList_index()+1 %>&level=<%= article.getList_indexLevel()+1 %>'">
+					</div>
+					<div style="display:table-cell;border-top:2px solid white;padding-top:5px;text-align:center;padding-left:20px;">
+						<input type="button" value="뒤로" style="background-color:black;border:1px solid white;color:white;" onclick="history.back()">
+					</div>
+				</div>		
+			</div>
+		</form>
+		<!-- Replys -->
 			<%
 			//댓글 parameter Setting
 			ArrayList <ReplyDTO> r_list = reply_dao.getList(no);
 			
 			%>
 			<div style="display:table;width:90%;margin-top:10px">
+				<form name="reply" method="post" action="board_reply.jsp">
 				<div style="display:table-row">
 					<div style="display:table-cell;border-top:2px solid white;height:10px">
 					</div>
@@ -168,35 +187,28 @@ if(article.getTitle().contains("삭제된게시글입니다") && !(id.equals("dfjung4254"
 				<div style="display:table-row">
 					<div style="display:table-cell;width:5%"></div>
 					<div style="display:table-cell;width:20%;vertical-align:top;font-family:돋움;font-size:9pt;padding:0.4em;">
-						<%= member_dao.getValue("id", id, "name") %>
+						<%
+						String r_name = member_dao.getValue("id", id, "name");
+						%>
+						<%= r_name %>
 					</div>
 					<div style="display:table-cell;padding:0.4em;">
-						<textarea name="r_contents" style="width:95%;height:50px;color:white;background-color:black;border:1px dotted lightgray;padding:0.4em;"></textarea>
+						<textarea name="contents" style="width:95%;height:50px;color:white;background-color:black;border:1px dotted lightgray;padding:0.4em;"></textarea>
 					</div>
 					<div style="display:table-cell;padding:0.4em;">
-						<input type="button" value="Re" onclick="replyCheck();" style="background-color:black;border:1px dotted white;color:lightgray;font-size:9pt;font-family:돋움;">
+						<input type="submit" value="Re" style="background-color:black;border:1px dotted white;color:lightgray;font-size:9pt;font-family:돋움;">
 					</div>
-					<div style="display:table-cell;width:5%"></div>
+					<div style="display:table-cell;width:5%">
+						<input name="board_no" value="<%=no %>" type="hidden">
+						<input name="writer_id" value="<%=id %>" type="hidden">
+						<input name="writer" value="<%=r_name %>" type="hidden">
+						<input name="writer_ip" value="<%=request.getRemoteAddr() %>" type="hidden">
+						<input name="line_number" value="<%=//넣어야함 r_dao %>" type="hidden">
+						<input name="isReply" value="0" type="hidden">
+					</div>
 				</div>
+				</form>
 			</div>
-			<!-- BTNs -->
-			<div style="display:table;width:90%;margin-top:10px">
-				<div style="display:table-row">
-					<div style="display:table-cell;border-top:2px solid white;padding-top:5px;text-align:center;padding-right:20px;">
-						<input type="submit" value="수정" style="background-color:black;border:1px solid white;color:white;">
-					</div>
-					<div style="display:table-cell;border-top:2px solid white;padding-top:5px;text-align:center;padding-right:20px;">
-						<input type="button" value="삭제" style="background-color:black;border:1px solid white;color:white;" onclick="javascript:delConfirm(<%= no %>)">
-					</div>
-					<div style="display:table-cell;border-top:2px solid white;padding-top:5px;text-align:center;padding-right:20px;">
-						<input type="button" value="답글" style="background-color:black;border:1px solid white;color:white;" onclick="location.href='board_insert.jsp?index=<%= article.getList_index()+1 %>&level=<%= article.getList_indexLevel()+1 %>'">
-					</div>
-					<div style="display:table-cell;border-top:2px solid white;padding-top:5px;text-align:center;padding-left:20px;">
-						<input type="button" value="뒤로" style="background-color:black;border:1px solid white;color:white;" onclick="history.back()">
-					</div>
-				</div>		
-			</div>
-		</form>
 	</div>
 
 <%@ include file="../bottom.jsp" %>
