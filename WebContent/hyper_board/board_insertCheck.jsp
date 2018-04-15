@@ -1,19 +1,31 @@
 <%@ page language="java" contentType="text/html; charset=EUC-KR"
     pageEncoding="EUC-KR"%>
+<%@ page import="java.io.File, com.oreilly.servlet.MultipartRequest, com.oreilly.servlet.multipart.DefaultFileRenamePolicy" %>
 <jsp:useBean id="dao" class="home.board.BoardDAO" />
 <%
 
 request.setCharacterEncoding("EUC-KR");
+String saveDir = request.getRealPath("/upload");
+int maxSize = 1024*1024*100;
+String encType = "EUC-KR";
 
-String writer = request.getParameter("writer");
-String writer_id = request.getParameter("writer_id");
-String writer_ip = request.getParameter("writer_ip");
-String title = request.getParameter("title");
-String contents = request.getParameter("contents");
-String email = request.getParameter("email");
-int list_index = Integer.parseInt(request.getParameter("list_index"));
-int list_indexLevel = Integer.parseInt(request.getParameter("list_indexLevel"));
-int ret = dao.insertContents(writer, writer_id, writer_ip, title, contents, email, list_index, list_indexLevel);
+MultipartRequest m_request = new MultipartRequest(request, saveDir, maxSize, encType, new DefaultFileRenamePolicy());
+
+String writer = m_request.getParameter("writer");
+String writer_id = m_request.getParameter("writer_id");
+String writer_ip = m_request.getParameter("writer_ip");
+String title = m_request.getParameter("title");
+String contents = m_request.getParameter("contents");
+String email = m_request.getParameter("email");
+int list_index = Integer.parseInt(m_request.getParameter("list_index"));
+int list_indexLevel = Integer.parseInt(m_request.getParameter("list_indexLevel"));
+String file_name = m_request.getFilesystemName("file");
+File file = m_request.getFile("file");
+
+System.out.println("uplodaded file : "+file_name);
+System.out.println(saveDir);
+
+int ret = dao.insertContents(writer, writer_id, writer_ip, title, contents, email, list_index, list_indexLevel, file_name);
 
 if(ret >0){
 	%>

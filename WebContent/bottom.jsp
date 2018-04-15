@@ -18,7 +18,7 @@
 				}else if(admin.equals("dfjung4254")){
 					//老馆
 					%>
-					<a href="admin_member.jsp">雀盔包府</a>
+					<a href="<%=request.getContextPath() %>/admin_member.jsp">雀盔包府</a>
 					<%
 				}else{
 					%>

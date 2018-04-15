@@ -16,6 +16,7 @@ public class BoardDTO {
 	private int list_index;
 	private int list_indexLevel;
 	private String date;
+	private String file_name;
 	
 	//constructor
 	public BoardDTO() {
@@ -108,6 +109,14 @@ public class BoardDTO {
 	
 	public void setDate(String date) {
 		this.date = date;
+	}
+	
+	public String getFile_name() {
+		return file_name;
+	}
+	
+	public void setFile_name(String file_name) {
+		this.file_name = file_name;
 	}
 	
 }

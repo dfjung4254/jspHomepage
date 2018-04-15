@@ -58,7 +58,7 @@ public class BoardDAO {
 				contents.setList_index(rs.getInt("list_index"));
 				contents.setList_indexLevel(rs.getInt("list_indexLevel"));
 				contents.setDate(rs.getString("date"));
-				
+				contents.setFile_name(rs.getString("file_name"));
 				
 				list.add(contents);
 			}
@@ -99,11 +99,11 @@ public class BoardDAO {
 		return ret;
 	}
 	
-	public int insertContents(String writer, String writer_id, String writer_ip, String title, String contents, String email, int list_index, int list_indexLevel) {
+	public int insertContents(String writer, String writer_id, String writer_ip, String title, String contents, String email, int list_index, int list_indexLevel, String file_name) {
 		int ret = 0;
 		
-		String sql = "insert into board (writer, writer_id, writer_ip, title, contents, email, views, list_index, list_indexLevel, date)"
-				+ " values (?, ?, ?, ?, ?, ?, 0, ?, ?, now());";
+		String sql = "insert into board (writer, writer_id, writer_ip, title, contents, email, views, list_index, list_indexLevel, date, file_name)"
+				+ " values (?, ?, ?, ?, ?, ?, 0, ?, ?, now(), ?);";
 		try {
 			con = ds.getConnection();
 			ps = con.prepareStatement("update board SET list_index=list_index+1 where list_index>="+list_index+";");
@@ -118,6 +118,7 @@ public class BoardDAO {
 			ps.setString(6, email);
 			ps.setInt(7, list_index);
 			ps.setInt(8, list_indexLevel);
+			ps.setString(9, file_name);
 			ret = ps.executeUpdate();
 			
 			con.close();
@@ -152,6 +153,7 @@ public class BoardDAO {
 				contents.setList_index(rs.getInt("list_index"));
 				contents.setList_indexLevel(rs.getInt("list_indexLevel"));
 				contents.setDate(rs.getString("date"));
+				contents.setFile_name(rs.getString("file_name"));
 			}
 			
 			con.close();

@@ -31,6 +31,11 @@
 				document.board_update.submit();
 			}
 		}
+		function replyCheck(){
+			if(confirm("댓글다시겠습니까?")){
+				document.b_reply.submit();
+			}
+		}
 		
 	</script>
 	
@@ -58,11 +63,7 @@
 						<a href = "<%=request.getContextPath() %>/admin_memberUpdate.jsp?id=<%= id %>">MYPAGE</a> |
 						<%
 					}
-					
-					
-					
 					%>
-
 					<a href = "<%=request.getContextPath() %>/hyper_board/board_list.jsp?page=1">BOARD</a> | 
 					<a href = "<%=request.getContextPath() %>/intro.jsp">INTRO</a>
 					</menu>

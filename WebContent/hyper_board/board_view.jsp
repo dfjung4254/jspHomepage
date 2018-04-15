@@ -3,7 +3,9 @@
 <%@ include file="../top.jsp" %>
 <%@ include file="../subMenu.jsp" %>
 <jsp:useBean id="dao" class="home.board.BoardDAO" />
-<%@ page import="home.board.BoardDTO" %>
+<jsp:useBean id="reply_dao" class="home.board.ReplyDAO" />
+<jsp:useBean id="member_dao" class="home.member.MemberDAO" />
+<%@ page import="home.board.BoardDTO, java.util.ArrayList, home.board.ReplyDTO" %>
 <%
 
 request.setCharacterEncoding("EUC-KR");
@@ -79,9 +81,20 @@ if(article.getTitle().contains("삭제된게시글입니다") && !(id.equals("dfjung4254"
 				</div>
 				<div style="display:table-row">
 					<div style="border-bottom:2px solid white;display:table-cell;padding:3px;width:20%;font-family:consolas;font-size:9pt;">
-						CONTENTS
+						DOWNLOAD
 					</div>
-					<div style="border-bottom:2px solid white;display:table-cell;padding:3px;text-align:left;">
+					<div style="border-bottom:2px solid white;display:table-cell;padding:3px;text-align:center;font-size:9pt;font-family:consolas">
+						<%
+						if(article.getFile_name()== null || article.getFile_name().equals("")){
+							%>
+							파일없음
+							<%
+							}else{
+							%>
+							<a href="download.jsp?file_name=<%= article.getFile_name() %>" style="color:skyblue;"><%= article.getFile_name() %></a>
+							<%
+						}
+						%>
 						<input name="writer_id" value="<%= article.getWriter_id() %>" type="hidden" style="height:100%;width:90%;background-color:black;border:1px dotted lightgray;font-size:9pt;">
 						<input name="list_index" value="<%= article.getList_index() %>" type="hidden" style="height:100%;width:90%;background-color:black;border:1px dotted lightgray;font-size:9pt;">
 						<input name="list_indexLevel" value="<%= article.getList_indexLevel() %>" type="hidden" style="height:100%;width:90%;background-color:black;border:1px dotted lightgray;font-size:9pt;">
@@ -97,6 +110,76 @@ if(article.getTitle().contains("삭제된게시글입니다") && !(id.equals("dfjung4254"
 					</div>
 				</div>		
 			</div>
+			<!-- Replys -->
+			<%
+			//댓글 parameter Setting
+			ArrayList <ReplyDTO> r_list = reply_dao.getList(no);
+			
+			%>
+			<div style="display:table;width:90%;margin-top:10px">
+				<div style="display:table-row">
+					<div style="display:table-cell;border-top:2px solid white;height:10px">
+					</div>
+					<div style="display:table-cell;border-top:2px solid white;height:10px">
+					</div>
+					<div style="display:table-cell;border-top:2px solid white;height:10px">
+					</div>
+					<div style="display:table-cell;border-top:2px solid white;height:10px">
+					</div>
+					<div style="display:table-cell;border-top:2px solid white;height:10px">
+					</div>
+				</div>
+				<%
+				
+				for(int i = 0; i < r_list.size(); i++){
+					%>
+					<div style="display:table-row">
+						<div style="display:table-cell;width:5%">
+						</div>
+						<div style="display:table-cell;width:20%;padding:0.2em;border-top:1px dotted lightgray;border-bottom:1px dotted lightgray;font-size:9pt;font-family:돋움;color:lightgray">
+						<%
+						String r_writer = r_list.get(i).getWriter();
+						if(r_list.get(i).getIsReply()==1){
+							r_writer = "&nbsp;&nbsp;&nbsp;&nbsp;└→"+r_writer;
+						}else{
+							r_writer = "└→"+r_writer;
+						}
+						%>
+							<%= r_writer %>
+						</div>
+						<div style="display:table-cell;text-align:left;padding:0.2em;border-top:1px dotted lightgray;border-bottom:1px dotted lightgray;font-size:9pt;font-family:돋움;color:lightgray">
+							<%
+							String r_contents = r_list.get(i).getContents().replace("\r\n", "<br>");
+							if(r_list.get(i).getIsReply()==1){
+								r_contents = "&nbsp;&nbsp;&nbsp;&nbsp;"+r_contents;
+							}
+							%>
+							<%= r_contents %>
+						</div>
+						<div style="display:table-cell;width:10%;border-top:1px dotted lightgray;border-bottom:1px dotted lightgray;">
+							<input type="button" value="▽" style="background-color:black;border:1px dotted white;color:lightgray;font-size:9pt;font-family:돋움;">
+						</div>
+						<div style="display:table-cell;width:5%">
+						</div>
+					</div>
+					<%
+				}				
+				%>
+				<div style="display:table-row">
+					<div style="display:table-cell;width:5%"></div>
+					<div style="display:table-cell;width:20%;vertical-align:top;font-family:돋움;font-size:9pt;padding:0.4em;">
+						<%= member_dao.getValue("id", id, "name") %>
+					</div>
+					<div style="display:table-cell;padding:0.4em;">
+						<textarea name="r_contents" style="width:95%;height:50px;color:white;background-color:black;border:1px dotted lightgray;padding:0.4em;"></textarea>
+					</div>
+					<div style="display:table-cell;padding:0.4em;">
+						<input type="button" value="Re" onclick="replyCheck();" style="background-color:black;border:1px dotted white;color:lightgray;font-size:9pt;font-family:돋움;">
+					</div>
+					<div style="display:table-cell;width:5%"></div>
+				</div>
+			</div>
+			<!-- BTNs -->
 			<div style="display:table;width:90%;margin-top:10px">
 				<div style="display:table-row">
 					<div style="display:table-cell;border-top:2px solid white;padding-top:5px;text-align:center;padding-right:20px;">

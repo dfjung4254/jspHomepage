@@ -28,7 +28,7 @@ int list_indexLevel = Integer.parseInt(request.getParameter("level"));
 		<div style="font-size:20pt;font-family:consolas;color:skyblue;letter-spacing:0.2em;">
 			NEW ARTICLE
 		</div>
-		<form name="board_insert" method="post" action="board_insertCheck.jsp">
+		<form name="board_insert" method="post" action="board_insertCheck.jsp" enctype="multipart/form-data">
 			<div style="display:table; width:90%;margin-top:15px;">
 				<div style="display:table-row">
 					<div style="display:table-cell;padding:3px;width:20%;border-top:2px solid white;font-family:consolas;font-size:9pt;">
@@ -47,7 +47,7 @@ int list_indexLevel = Integer.parseInt(request.getParameter("level"));
 						EMAIL
 					</div>
 					<div style="display:table-cell;padding:3px;text-align:left;">
-						<input name="email" value="<%= email %>" type="text" style="height:100%;width:90%;color:white;background-color:black;border:1px dotted lightgray;font-size:9pt;">
+						<input name="email" value="<%= email %>" type="text" style="height:100%;width:40%;color:white;background-color:black;border:1px dotted lightgray;font-size:9pt;">
 					</div>
 				</div>
 				<div style="display:table-row">
@@ -60,9 +60,18 @@ int list_indexLevel = Integer.parseInt(request.getParameter("level"));
 				</div>
 				<div style="display:table-row">
 					<div style="border-bottom:2px solid white;display:table-cell;padding:3px;width:20%;font-family:consolas;font-size:9pt;">
-						CONTENTS
+						UPLOAD
 					</div>
 					<div style="border-bottom:2px solid white;display:table-cell;padding:3px;text-align:left;">
+						<script type="text/javascript">
+							function file_upload(val){
+								var element = document.getElementById("file_name");
+								element.value = val;
+							}
+						</script>
+						<input id="file_name" name="file_name" type="text" readonly style="height:100%;width:70%;background-color:black;border:1px dotted lightgray;font-size:9pt;color:white;">
+						<input name="file" type="file" onchange="file_upload(this.value)" style="opacity:0;width:20%;position:absolute;width:90px;z-index:2;filter:alpha(opacity:0)">
+						<div style="display:inline-block;position:absolute;z-index:1;text-align:center;width:90px;height:15px;border:1px solid white;font-size:9pt;font-family:consolas">search</div>
 						<input name="writer_id" value="<%= id %>" type="hidden" style="height:100%;width:90%;background-color:black;border:1px dotted lightgray;font-size:9pt;">
 						<input name="list_index" value="<%= list_index %>" type="hidden" style="height:100%;width:90%;background-color:black;border:1px dotted lightgray;font-size:9pt;">
 						<input name="list_indexLevel" value="<%= list_indexLevel %>" type="hidden" style="height:100%;width:90%;background-color:black;border:1px dotted lightgray;font-size:9pt;">
