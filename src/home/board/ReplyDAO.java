@@ -67,4 +67,56 @@ public class ReplyDAO {
 		return list;
 	}
 	
+	public int countReply(int board_no) {
+		int ret = 0;
+		String sql = "select count(*) as num from board_reply where board_no=?";
+		try {
+			con = ds.getConnection();
+			ps = con.prepareStatement(sql);
+			ps.setInt(1, board_no);
+			rs = ps.executeQuery();
+			
+			while(rs.next()) {
+				ret = rs.getInt("num");
+			}
+			
+			con.close();
+			ps.close();
+			rs.close();
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		return ret;
+	}
+	
+	public int insultReply(ReplyDTO contents) {
+		int ret = 0;
+		String sql = "insert into board_reply (board_no, writer, writer_id, writer_ip, contents, line_number, isReply) "
+				+"values (?, ?, ?, ?, ?, ?, ?);";
+		try {
+			con = ds.getConnection();
+			ps = con.prepareStatement(sql);
+			ps.setInt(1, contents.getBoard_no());
+			ps.setString(2, contents.getWriter());
+			ps.setString(3, contents.getWriter_id());
+			ps.setString(4, contents.getWriter_ip());
+			ps.setString(5, contents.getContents());
+			ps.setInt(6, contents.getLine_number());
+			ps.setInt(7, contents.getIsReply());
+			ret = ps.executeUpdate();
+			
+			con.close();
+			ps.close();
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		return ret;
+	}
+	
 }

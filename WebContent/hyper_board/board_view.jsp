@@ -37,7 +37,9 @@ if(article.getTitle().contains("삭제된게시글입니다") && !(id.equals("dfjung4254"
 
 
 %>
-	<div align="center">
+	<div align="center" style="overflow:auto;
+						scrollbar-face-color:black;scrollbar-highlight-color:white;
+						scrollbar-track-color:black;height:400px;">
 		<div style="font-size:20pt;font-family:consolas;color:skyblue;letter-spacing:0.2em;">
 			ARTICLE
 		</div>
@@ -133,9 +135,19 @@ if(article.getTitle().contains("삭제된게시글입니다") && !(id.equals("dfjung4254"
 			//댓글 parameter Setting
 			ArrayList <ReplyDTO> r_list = reply_dao.getList(no);
 			
+			int replyLine = -1;
+			
+			if(request.getParameter("rep_line")==null || request.getParameter("rep_line").equals("")){
+				replyLine = -1;
+				System.out.println("repLine == -1");
+			}else{
+				replyLine = Integer.parseInt(request.getParameter("rep_line"));
+				System.out.println("replyLine = "+replyLine);
+			}
+			
 			%>
-			<div style="display:table;width:90%;margin-top:10px">
-				<form name="reply" method="post" action="board_reply.jsp">
+			<form name="reply" method="post" action="board_reply.jsp">
+			<div style="display:table;width:90%;margin-top:10px">		
 				<div style="display:table-row">
 					<div style="display:table-cell;border-top:2px solid white;height:10px">
 					</div>
@@ -176,16 +188,44 @@ if(article.getTitle().contains("삭제된게시글입니다") && !(id.equals("dfjung4254"
 							<%= r_contents %>
 						</div>
 						<div style="display:table-cell;width:10%;border-top:1px dotted lightgray;border-bottom:1px dotted lightgray;">
-							<input type="button" value="▽" style="background-color:black;border:1px dotted white;color:lightgray;font-size:9pt;font-family:돋움;">
+							<input type="button" value="▽" onclick="location.href='board_view.jsp?no=<%=no %>&rep_line=<%=i %>'" style="background-color:black;border:1px dotted white;color:lightgray;font-size:9pt;font-family:돋움;">
 						</div>
 						<div style="display:table-cell;width:5%">
 						</div>
 					</div>
 					<%
+					if(i==replyLine){
+						//해당댓글 밑에 쓰기 칸 만들기!
+						%>
+						<div style="display:table-row">
+							<div style="display:table-cell;width:5%;"></div>
+							<div style="display:table-cell;width:20%;vertical-align:top;font-family:돋움;font-size:9pt;padding:0.4em;">
+								<%
+								String r_name = member_dao.getValue("id", id, "name");
+								%>
+								<%= r_name %>
+							</div>
+							<div style="display:table-cell;padding:0.4em;">
+								<textarea name="contents" style="width:95%;height:50px;color:white;background-color:black;border:1px dotted lightgray;padding:0.4em;"></textarea>
+							</div>
+							<div style="display:table-cell;padding:0.4em;">
+								<input type="submit" value="Re" style="background-color:black;border:1px dotted white;color:lightgray;font-size:9pt;font-family:돋움;">
+							</div>
+							<div style="display:table-cell;width:5%">
+								<input name="board_no" value="<%=no %>" type="hidden">
+								<input name="writer_id" value="<%=id %>" type="hidden">
+								<input name="writer" value="<%=r_name %>" type="hidden">
+								<input name="writer_ip" value="<%=request.getRemoteAddr() %>" type="hidden">
+								<input name="line_number" value="<%=//수정해야함 그리고 뒷 라인number ++ 해줘야함 %>" type="hidden">
+								<input name="isReply" value="0" type="hidden">
+							</div>
+						</div>
+						<%
+					}
 				}				
 				%>
 				<div style="display:table-row">
-					<div style="display:table-cell;width:5%"></div>
+					<div style="display:table-cell;width:5%;"></div>
 					<div style="display:table-cell;width:20%;vertical-align:top;font-family:돋움;font-size:9pt;padding:0.4em;">
 						<%
 						String r_name = member_dao.getValue("id", id, "name");
@@ -203,12 +243,12 @@ if(article.getTitle().contains("삭제된게시글입니다") && !(id.equals("dfjung4254"
 						<input name="writer_id" value="<%=id %>" type="hidden">
 						<input name="writer" value="<%=r_name %>" type="hidden">
 						<input name="writer_ip" value="<%=request.getRemoteAddr() %>" type="hidden">
-						<input name="line_number" value="<%=//넣어야함 r_dao %>" type="hidden">
+						<input name="line_number" value="<%=reply_dao.countReply(no) %>" type="hidden">
 						<input name="isReply" value="0" type="hidden">
 					</div>
 				</div>
-				</form>
 			</div>
+		</form>
 	</div>
 
 <%@ include file="../bottom.jsp" %>
